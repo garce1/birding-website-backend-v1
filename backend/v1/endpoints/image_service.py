@@ -36,16 +36,17 @@ class ImageService:
     def __persist_metadata(client, image):
         key = client.key('ImageMetadata')
         metadata = datastore.Entity(key, exclude_from_indexes=ImageService.__ENTITY_METADATA_EXCLUDE_FROM_INDEXES)
+        metadata_dict = image['metadata']
         metadata.update({
-            'category': image['metadata']['category'],
-            'descriptionEnglish': image['metadata']['descriptionEnglish'],
-            'descriptionPortuguese': image['metadata']['descriptionPortuguese'],
-            'location': image['metadata']['location'],
-            'sourceFileName': image['metadata']['sourceFileName'],
-            'speciesNameEnglish': image['metadata']['speciesNameEnglish'],
-            'speciesNameLatin': image['metadata']['speciesNameLatin'],
-            'speciesNamePortuguese': image['metadata']['speciesNamePortuguese'],
-            'tags': image['metadata']['tags'],
+            'category': metadata_dict['category'],
+            'descriptionEnglish': metadata_dict['descriptionEnglish'],
+            'descriptionPortuguese': metadata_dict['descriptionPortuguese'],
+            'location': metadata_dict['location'],
+            'sourceFileName': metadata_dict['sourceFileName'],
+            'speciesNameEnglish': metadata_dict['speciesNameEnglish'],
+            'speciesNameLatin': metadata_dict['speciesNameLatin'],
+            'speciesNamePortuguese': metadata_dict['speciesNamePortuguese'],
+            'tags': metadata_dict['tags'],
         })
         client.put(metadata)
         return metadata
