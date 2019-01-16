@@ -1,1 +1,2 @@
+from .image_resources import ImagesResource
 from .photo_gallery_resources import PhotoGalleriesResource
