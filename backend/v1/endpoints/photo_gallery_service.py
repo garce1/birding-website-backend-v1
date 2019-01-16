@@ -1,6 +1,7 @@
 class PhotoGalleryService:
 
-    def get_all(self):
+    @staticmethod
+    def get_all():
         return [
             {
                 'name': 'Birds beauties'
